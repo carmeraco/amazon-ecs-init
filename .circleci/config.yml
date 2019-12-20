@@ -2,6 +2,7 @@ version: '2.1'
 
 orbs:
   aws-ecr: circleci/aws-ecr@6.5.0
+  go: circleci/go@0.2.0
 
 machine: &machine
   # Run docker-compose on the VM
@@ -15,9 +16,10 @@ jobs:
     <<: *machine
     steps:
       - checkout
+      - go/install
       - run:
           name: Run unit tests
-          command: make test-in-docker
+          command: make gotest
 
 workflows:
   build-and-push:
