@@ -15,8 +15,9 @@
 # This script is meant to make all package available in the 'canonical' location
 # when running on a remote CI machine
 
-if [[ ! -d "${GOROOT}/src/github.com/aws/amazon-ecs-init" ]]; then
-	mkdir -p "${GOROOT}/src/github.com/aws"
-  echo "Symlinking $(pwd) to ${GOROOT}/src/github.com/aws/amazon-ecs-init"
-	ln -s "$(pwd)" "${GOROOT}/src/github.com/aws/amazon-ecs-init"
+if [[ ! -d "${HOME}/go/src/github.com/aws/amazon-ecs-init" ]]; then
+	mkdir -p "${HOME}/go/src/github.com/aws"
+  echo "Symlinking $(pwd) to ${HOME}/go/src/github.com/aws/amazon-ecs-init"
+	ln -s "$(pwd)" "${HOME}/go/src/github.com/aws/amazon-ecs-init"
+  GOPATH="${GOPATH}:${HOME}/go"
 fi
