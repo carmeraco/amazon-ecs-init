@@ -18,6 +18,9 @@ jobs:
       - checkout
       - go/install
       - run:
+          name: Make all packages available in the canonical golang location
+          command: ./scripts/hack/symlink-gopath-travisci
+      - run:
           name: Run unit tests
           command: make gotest
 
